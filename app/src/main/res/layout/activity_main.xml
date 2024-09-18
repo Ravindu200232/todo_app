@@ -19,19 +19,20 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:text="Your Task"
             android:textColor="@color/white"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            tools:fontFamily="@font/bangers" />
 
         <Button
             android:id="@+id/deleteAll"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
-            android:background="@android:drawable/btn_dialog"
+            android:background="@drawable/ic_close_white"
             android:backgroundTint="#CC441D"
             android:text="X"
             android:textAllCaps="false"
@@ -39,22 +40,42 @@
     </LinearLayout>
 
     <!-- Sort By Button -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:gravity="center">
 
         <Button
             android:id="@+id/sortBy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="Sort By"
             android:background="@drawable/button_background"
-            android:textColor="@color/white" />
-    </LinearLayout>
+            android:fontFamily="@font/baloo"
+            android:text="Sort By"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:fontFamily="@font/baloo"
+            android:text="Schedule"
+            android:textColor="@color/white"
+            app:icon="@android:drawable/ic_popup_reminder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/sortBy"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Schedule Button -->
     <LinearLayout
@@ -64,30 +85,24 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/schedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:text="Schedule"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white" />
     </LinearLayout>
 
     <!-- Custom SearchView with Styling -->
+
+    <!-- RecyclerView for Displaying List of Tasks -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:queryHint="Search tasks"
-        android:iconifiedByDefault="false"
         android:background="@drawable/searchview_background"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search tasks"
+        app:backgroundTint="#FFFFFF"
+        app:closeIcon="@drawable/ic_close_white"
         app:queryBackground="@color/searchview_background"
-        app:searchIcon="@drawable/ic_search_white"
-        app:closeIcon="@drawable/ic_close_white"/>
+        app:searchIcon="@android:drawable/ic_menu_search" />
 
-    <!-- RecyclerView for Displaying List of Tasks -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -101,8 +116,8 @@
         <!-- Floating Action Button to Add New Task -->
         <Button
             android:id="@+id/add"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="77dp"
+            android:layout_height="82dp"
             android:layout_gravity="center|bottom"
             android:layout_marginBottom="25dp"
             android:background="@drawable/circular_button"

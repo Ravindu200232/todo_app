@@ -14,7 +14,7 @@
         style="?attr/materialCardViewFilledStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#FF5722"
+        app:cardBackgroundColor="#A39D9B"
         app:layout_constraintStart_toStartOf="@+id/card_width_gline"
         app:layout_constraintTop_toTopOf="@+id/card_width_gline"
         app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge">
@@ -32,7 +32,7 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="40sp"
+                android:textSize="34sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +46,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/listParent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAlarmTime"
@@ -60,12 +60,13 @@
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/listParent"
                 app:layout_constraintTop_toBottomOf="@+id/tvAlarmTime"
-                app:layout_constraintVertical_bias="0.16"
+                app:layout_constraintVertical_bias="0.0"
                 tools:text="Description" />
 
             <Button
@@ -75,7 +76,8 @@
                 android:text="@string/dismiss"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvDesc" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
