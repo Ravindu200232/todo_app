@@ -14,6 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbexample.alarmmanager.R
 import com.mbexample.myapplication.ui.main.AlarmActivity
 
+//entity - table
+//dao - quaries
+//database
+
+
 class MainActivity : AppCompatActivity() {
     private lateinit var add: Button
     private lateinit var deleteAll: Button

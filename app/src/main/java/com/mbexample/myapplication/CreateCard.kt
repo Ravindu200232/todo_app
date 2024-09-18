@@ -10,13 +10,17 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.room.Room
 import com.mbexample.alarmmanager.R
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 class CreateCard : ComponentActivity() {
+    private lateinit var database: myDatabase
     private lateinit var selectedDateTextView: TextView
     private lateinit var selectedTimeTextView: TextView
     private lateinit var selectedEndDateTextView: TextView
@@ -29,6 +33,9 @@ class CreateCard : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_card)
+        database= Room.databaseBuilder(
+            applicationContext,myDatabase::class.java,"To_Do"
+        ).build()
 
         // Initialize TextViews and EditTexts
         selectedDateTextView = findViewById(R.id.selected_date)
@@ -68,6 +75,10 @@ class CreateCard : ComponentActivity() {
 
             if (title.isNotEmpty() && priority.isNotEmpty() && date.isNotEmpty() && time.isNotEmpty()) {
                 DataObject.setData(title, priority, date, time)
+                GlobalScope.launch {
+                    database.dao().insertTask(Entity(0,title,priority,time,date))
+                }
+                database.dao().insertTask(Entity(0,title,priority,time,date))
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish() // Optional: to close the current activity after saving
