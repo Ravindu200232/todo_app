@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioButton
@@ -24,6 +25,7 @@ class CreateCard : ComponentActivity() {
     private lateinit var selectedDateTextView: TextView
     private lateinit var selectedTimeTextView: TextView
     private lateinit var selectedEndDateTextView: TextView
+    private lateinit var dao:DAO
     private lateinit var selectedEndTimeTextView: TextView
     private lateinit var createTitle: EditText
     private lateinit var priorityGroup: RadioGroup
@@ -77,8 +79,12 @@ class CreateCard : ComponentActivity() {
                 DataObject.setData(title, priority, date, time)
                 GlobalScope.launch {
                     database.dao().insertTask(Entity(0,title,priority,time,date))
+
                 }
-                database.dao().insertTask(Entity(0,title,priority,time,date))
+
+                GlobalScope.launch {
+                    Log.i("ravindu", database.dao().getTask().toString())
+                }
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish() // Optional: to close the current activity after saving

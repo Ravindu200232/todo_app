@@ -23,6 +23,6 @@ interface DAO {
     suspend fun deleteAll()
 
     @Query("Select * from to_do")
-    fun getTask():List<CardInfo>
+    suspend fun getTask():List<CardInfo>
 
 }

@@ -1,9 +1,6 @@
 package com.mbexample.myapplication.utils
 
-/**
- * A wrapper class for livedata events
- * used in [https://github.com/android/architecture-samples/]
- * */
+
  class Event<out T>(private val content: T) {
 
     var hasBeenHandled = false

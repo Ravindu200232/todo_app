@@ -12,6 +12,7 @@ data class Entity(
     var title:String,
     var priority:String,
     var Rdate:String,
-    var Rtime:String
+    var Rtime:String,
+    var isCompleted: Boolean = false
 
 )
