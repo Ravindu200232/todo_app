@@ -31,16 +31,42 @@
         android:textColorHint="#BFBBBB"
         android:textColor="@color/white"/>
 
-    <EditText
-        android:id="@+id/update_priority"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Priority"
-        android:padding="15dp"
-        android:background="@drawable/custom_edittetext"
-        android:textColorHint="#BFBBBB"
-        android:textColor="@color/white"/>
+        android:text="Select Priority"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
+
+    <RadioGroup
+        android:id="@+id/priority_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/radio_high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radio_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium"
+            android:textColor="@color/white"/>
+
+        <RadioButton
+            android:id="@+id/radio_low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low"
+            android:textColor="@color/white"/>
+    </RadioGroup>
 
     <!-- Add buttons for date and time selection -->
     <Button

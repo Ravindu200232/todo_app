@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,7 @@ import java.util.Calendar
 
 class UpdateCard : AppCompatActivity() {
     private lateinit var updateTitle: EditText
-    private lateinit var updatePriority: EditText
+    private lateinit var priorityRadioGroup: RadioGroup
     private lateinit var selectedDate: TextView
     private lateinit var selectedTime: TextView
     private lateinit var deleteButton: Button
@@ -31,7 +32,7 @@ class UpdateCard : AppCompatActivity() {
 
         // Initialize views
         updateTitle = findViewById(R.id.update_title)
-        updatePriority = findViewById(R.id.update_priority)
+        priorityRadioGroup = findViewById(R.id.priority_radio_group) // Use RadioGroup
         selectedDate = findViewById(R.id.selected_date)
         selectedTime = findViewById(R.id.selected_time)
         deleteButton = findViewById(R.id.delete_button)
@@ -50,7 +51,7 @@ class UpdateCard : AppCompatActivity() {
         if (pos != -1) {
             val card = DataObject.getData(pos)
             updateTitle.setText(card.title)
-            updatePriority.setText(card.priority)
+            setSelectedPriority(card.priority) // Set selected priority based on existing data
             selectedDate.text = card.Rdate
             selectedTime.text = card.Rtime
 
@@ -60,10 +61,11 @@ class UpdateCard : AppCompatActivity() {
             }
 
             updateButton.setOnClickListener {
+                val selectedPriority = getSelectedPriority() // Get selected priority
                 DataObject.updateData(
                     pos,
                     updateTitle.text.toString(),
-                    updatePriority.text.toString(),
+                    selectedPriority,
                     selectedDate.text.toString(),
                     selectedTime.text.toString()
                 )
@@ -101,6 +103,23 @@ class UpdateCard : AppCompatActivity() {
             true
         )
         timePicker.show()
+    }
+
+    private fun getSelectedPriority(): String {
+        return when (priorityRadioGroup.checkedRadioButtonId) {
+            R.id.radio_high -> "High"
+            R.id.radio_medium -> "Medium"
+            R.id.radio_low -> "Low"
+            else -> "Medium" // Default value if none selected
+        }
+    }
+
+    private fun setSelectedPriority(priority: String) {
+        when (priority) {
+            "High" -> priorityRadioGroup.check(R.id.radio_high)
+            "Medium" -> priorityRadioGroup.check(R.id.radio_medium)
+            "Low" -> priorityRadioGroup.check(R.id.radio_low)
+        }
     }
 
     private fun myIntent() {
