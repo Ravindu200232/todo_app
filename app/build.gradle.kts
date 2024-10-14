@@ -45,10 +45,8 @@ android {
 
 dependencies {
 
-
     // Hilt (Dependency Injection)
     implementation(libs.hilt.android)
-    implementation(libs.firebase.crashlytics.buildtools)
     ksp(libs.hilt.android.compiler)
 
     // Room (Local Database)
@@ -90,7 +88,4 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-
-
 }
